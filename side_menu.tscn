@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7wylct6022kw"]
+
+[ext_resource type="Script" path="res://side_menu.gd" id="1_gfpw4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh2mk"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="SideMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gfpw4")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pane" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 125.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fh2mk")
+
+[node name="List" type="VBoxContainer" parent="Pane"]
+layout_mode = 2
+
+[node name="Head" type="PanelContainer" parent="Pane/List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Pane/List/Head"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "Side Menu"
+
+[node name="Button" type="Button" parent="Pane/List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Tasks"
+flat = true
+alignment = 0
+
+[node name="Button2" type="Button" parent="Pane/List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Other menus
+coming soon"
+flat = true
+alignment = 0
+
+[connection signal="gui_input" from="Background" to="." method="_on_background_gui_input"]

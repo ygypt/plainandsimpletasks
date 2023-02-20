@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2s6tklls1822"]
+
+[ext_resource type="Script" path="res://task_element.gd" id="1_pjspq"]
+[ext_resource type="Texture2D" uid="uid://lmg46t8ac0g1" path="res://vectors/keyboard_arrow_right.svg" id="2_god7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cary"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.25098, 0.203922, 0.309804, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2amr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u3g6p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8um1s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8c6n2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4e7e1"]
+
+[node name="TaskElement" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3cary")
+script = ExtResource("1_pjspq")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Text" type="VBoxContainer" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="HBox/Text"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 52
+text = "Task Title"
+
+[node name="Description" type="RichTextLabel" parent="HBox/Text"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 44
+text = "Task description. This can be long and go on for essentially forever as it must detail every bit of the task at hand which may be a lot of tasking"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="HBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("2_god7m")
+expand_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i2amr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u3g6p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8um1s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8c6n2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4e7e1")
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
